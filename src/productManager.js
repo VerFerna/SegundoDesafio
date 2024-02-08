@@ -28,7 +28,7 @@ class ProductManager {
     } catch (error) {
       await fs.promises.writeFile(ProductManager.#path, "[]");
 
-      console.log(`File created successfully.`);
+      console.log(`Archivo creado correctamente.`);
     }
   };
 
@@ -84,7 +84,7 @@ class ProductManager {
         await this._saveData(products);
 
         console.log(
-          `Product was loaded successfully - ${this._getLocaleTime()}`
+          `Producto Cargado - ${this._getLocaleTime()}`
         );
       }
     } catch (err) {
@@ -118,7 +118,7 @@ class ProductManager {
       const product = Object.values(products).find((i) => i.id === id);
 
       if (product === undefined) {
-        console.log(`Not found - ${this._getLocaleTime()}`);
+        console.log(`No Encontrado - ${this._getLocaleTime()}`);
       } else {
         console.log(product);
       }
@@ -135,9 +135,9 @@ class ProductManager {
       const ix = await products.findIndex((product) => product.id === id);
 
       if (ix === -1) {
-        console.log("Product does not exist");
+        console.log("El Producto NO Existe");
       } else if (props.hasOwnProperty("id") || props.hasOwnProperty("code")) {
-        console.log("Cannot update 'id' or 'code' property");
+        console.log("No se puede cargar 'id' o 'code'");
       } else {
         Object.assign(products[ix], props);
         const updatedProduct = products[ix];
@@ -161,9 +161,9 @@ class ProductManager {
         products = products.filter((i) => i.id !== id);
         await this._saveData(products);
 
-        console.log(`Product removed - ${this._getLocaleTime()}`);
+        console.log(`Producto Eliminado - ${this._getLocaleTime()}`);
       } else {
-        console.log(`Product does not exist - ${this._getLocaleTime()}`);
+        console.log(`El Producto NO Existe - ${this._getLocaleTime()}`);
       }
     } catch (err) {
       console.log(err);
