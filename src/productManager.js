@@ -39,7 +39,7 @@ class ProductManager {
         JSON.stringify(data, null, 2)
       );
     } catch (error) {
-      console.log(err);
+      console.log(error);
     }
   };
 
@@ -49,7 +49,7 @@ class ProductManager {
       const products = JSON.parse(data);
       return products;
     } catch (error) {
-      console.log(err);
+      console.log(error);
     }
   };
 
@@ -87,9 +87,9 @@ class ProductManager {
           `Producto Cargado - ${this._getLocaleTime()}`
         );
       }
-    } catch (err) {
-      console.log(err);
-      return err;
+    } catch (error) {
+      console.log(error);
+      return error;
     }
   };
 
@@ -99,16 +99,16 @@ class ProductManager {
 
       if (!fileExist) {
         await this._createFile();
-
         console.log(`[] - ${this._getLocaleTime()}`);
+        return [];
+        
       } else {
         const products = await this._readData();
-
         return products;
       }
-    } catch (err) {
-      console.log(err);
-      return err;
+    } catch (error) {
+      console.log(error);
+      return error;
     }
   };
 
@@ -122,9 +122,9 @@ class ProductManager {
       } else {
         console.log(product);
       }
-    } catch (err) {
-      console.log(err);
-      return err;
+    } catch (error) {
+      console.log(error);
+      return error;
     }
   };
 
@@ -145,9 +145,9 @@ class ProductManager {
 
         console.log(updatedProduct);
       }
-    } catch (err) {
-      console.log(err);
-      return err;
+    } catch (error) {
+      console.log(error);
+      return error;
     }
   };
 
@@ -165,9 +165,9 @@ class ProductManager {
       } else {
         console.log(`El Producto NO Existe - ${this._getLocaleTime()}`);
       }
-    } catch (err) {
-      console.log(err);
-      return err;
+    } catch (error) {
+      console.log(error);
+      return error;
     }
   };
 }
